@@ -1,14 +1,18 @@
 import { Client, QueryResult, QueryResultRow } from "pg";
 
+const user = process.env.POSTGRES_USER;
+const host = process.env.POSTGRES_HOST;
+const password = process.env.POSTGRES_PW;
+const database = process.env.POSTGRES_DATABASE;
+const port = Number(process.env.POSTGRES_PORT);
+
 async function pgQuery<T extends QueryResultRow>(
   sql: string,
 ): Promise<QueryResult<T> | null> {
-  const client = new Client({
-    user: process.env.POSTGRES_USER,
-    host: process.env.POSTGRES_HOST,
-    database: process.env.POSTGRES_DATABASE,
-    port: Number(process.env.POSTGRES_PORT),
-  });
+  const config = { user, host, database, port };
+  Object.assign(config, password ? password : {});
+
+  const client = new Client(config);
 
   try {
     await client.connect();
