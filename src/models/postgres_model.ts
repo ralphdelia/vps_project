@@ -10,7 +10,9 @@ async function pgQuery<T extends QueryResultRow>(
   sql: string,
 ): Promise<QueryResult<T> | null> {
   const config = { user, host, database, port };
-  Object.assign(config, password ? password : {});
+  Object.assign(config, password ? { password } : {});
+
+  console.log(config);
 
   const client = new Client(config);
 
