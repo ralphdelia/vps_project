@@ -1,4 +1,6 @@
 import express from "express";
+import { configDotenv } from "dotenv";
+configDotenv();
 
 import postgresRouter from "./routes/postgres";
 import mongoRouter from "./routes/mongo";

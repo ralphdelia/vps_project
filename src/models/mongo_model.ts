@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
-const conString = "mongodb://myUsername:myPassword@localhost:27017/testdb";
+
+console.log(process.env.MONGO_URL);
 
 mongoose
-  .connect(conString)
+  .connect(process.env.MONGO_URL!)
   .then((result) => {
     console.log("connected to MongoDB");
   })

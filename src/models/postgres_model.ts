@@ -4,10 +4,10 @@ async function pgQuery<T extends QueryResultRow>(
   sql: string,
 ): Promise<QueryResult<T> | null> {
   const client = new Client({
-    user: "ralph",
-    host: "localhost",
-    database: "vps_app",
-    port: 5432,
+    user: process.env.POSTGRES_USER,
+    host: process.env.POSTGRES_HOST,
+    database: process.env.POSTGRES_DATABASE,
+    port: Number(process.env.POSTGRES_PORT),
   });
 
   try {
