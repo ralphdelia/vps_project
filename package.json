@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "tsc": "tsc",
+    "prod": "node --env-file=.env",
+    "dev": "ts-node-dev src/main.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/pg": "^8.11.10",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3",
+    "pg": "^8.13.1"
+  }
+}
