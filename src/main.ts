@@ -1,4 +1,5 @@
 import express from "express";
+import morgan from "morgan";
 import { configDotenv } from "dotenv";
 configDotenv();
 
@@ -8,6 +9,7 @@ import mongoRouter from "./routes/mongo";
 const app = express();
 const PORT = process.env.EXPRESS_PORT || 3000;
 
+app.use(morgan("tiny"));
 app.use(express.json());
 
 app.use("/api/mongo", mongoRouter);
